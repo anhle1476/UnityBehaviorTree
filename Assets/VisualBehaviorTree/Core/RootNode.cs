@@ -11,18 +11,15 @@ namespace VisualBehaviorTree.Core
         [ReadOnly]
         public TreeNode child;
 
-        public RootNode() : base(
-            null,
-            outputPort: new NodePort
-            {
-                Orientation = Orientation.Vertical,
-                Direction = Direction.Output,
-                Capacity = Port.Capacity.Single,
-                Type = typeof(bool)
-            })
-        {
+        public override NodePort? InputPort => null;
 
-        }
+        public override NodePort? OutputPort => new NodePort
+        {
+            Orientation = Orientation.Horizontal,
+            Direction = Direction.Output,
+            Capacity = Port.Capacity.Single,
+            Type = typeof(bool)
+        };
 
         internal override void AddChild(TreeNode child)
         {

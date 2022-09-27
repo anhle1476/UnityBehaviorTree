@@ -39,18 +39,27 @@ namespace VisualBehaviorTree.Core
         [HideInInspector]
         public Vector2 position;
 
-        protected NodePort? _inputPort;
-        protected NodePort? _outputPort;
-
-        public TreeNode(NodePort? inputPort, NodePort? outputPort)
+        public virtual NodePort? InputPort
         {
-            _inputPort = inputPort;
-            _outputPort = outputPort;
+            get
+            {
+                return new NodePort
+                {
+                    Orientation = Orientation.Horizontal,
+                    Direction = Direction.Input,
+                    Capacity = Port.Capacity.Single,
+                    Type = typeof(bool)
+                };
+            }
         }
 
-        public NodePort? InputPort { get => _inputPort; }
-
-        public NodePort? OutputPort { get => _outputPort; }
+        public virtual NodePort? OutputPort
+        {
+            get
+            {
+                return null;
+            }
+        }
 
         public State Update()
         {
