@@ -13,11 +13,13 @@ namespace VisualBehaviorTree.Core
 
         public override NodePort? OutputPort => new NodePort
         {
-            Orientation = Orientation.Horizontal,
+            Orientation = Orientation.Vertical,
             Direction = Direction.Output,
             Capacity = Port.Capacity.Single,
             Type = typeof(bool)
         };
+
+        public override string UssClass => nameof(DecoratorNode);
 
         internal override void AddChild(TreeNode child)
         {

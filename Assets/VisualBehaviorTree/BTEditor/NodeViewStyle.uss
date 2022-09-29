@@ -1,0 +1,113 @@
+#node-border {
+    background-color: rgb(56, 56, 56);
+    border-left-color: rgb(32, 32, 32);
+    border-right-color: rgb(32, 32, 32);
+    border-top-color: rgb(32, 32, 32);
+    border-bottom-color: rgb(32, 32, 32);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    align-items: stretch;
+}
+
+#input {
+    align-items: center;
+    min-height: 20px;
+}
+
+#output {
+    align-items: center;
+}
+
+#selection-border {
+    border-left-color: rgb(97, 161, 226);
+    border-right-color: rgb(97, 161, 226);
+    border-top-color: rgb(97, 161, 226);
+    border-bottom-color: rgb(97, 161, 226);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+:hover > #selection-border {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+:checked > #selection-border {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(11, 103, 250);
+    border-right-color: rgb(11, 103, 250);
+    border-top-color: rgb(11, 103, 250);
+    border-bottom-color: rgb(11, 103, 250);
+}
+
+:hover:checked > #selection-border {
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.node {
+    min-width: 150px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.node #contents Label {
+    -unity-text-align: upper-center;
+}
+
+.node #title {
+    -unity-font-style: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.node #description {
+    font-size: 10px;
+}
+
+#divider {
+    height: 1px;
+    background-color: rgb(65, 65, 65);
+}
+
+.ActionNode #input {
+    background-color: rgba(181, 255, 233, 255);
+}
+
+.RootNode #input {
+    background-color: rgb(114, 125, 113);
+}
+
+.CompositeNode #input {
+    background-color: rgb(236, 64, 103);
+}
+
+.DecoratorNode #input {
+    background-color: rgb(173, 189, 255);
+}

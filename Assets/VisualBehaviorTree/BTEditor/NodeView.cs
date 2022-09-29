@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using Unity.VisualScripting.InputSystem;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 using VisualBehaviorTree.Core;
 
 namespace VisualBehaviorTree.BTEditor
@@ -14,7 +16,7 @@ namespace VisualBehaviorTree.BTEditor
         public Port output;
 
 
-        public NodeView(TreeNode node)
+        public NodeView(TreeNode node) : base("Assets/VisualBehaviorTree/BTEditor/NodeView.uxml")
         {
             this.node = node;
             this.title = node.name;
@@ -25,6 +27,7 @@ namespace VisualBehaviorTree.BTEditor
 
             CreateInputPorts();
             CreateOutputPorts();
+            SetupClasses();
         }
 
         private void CreateInputPorts()
@@ -36,6 +39,7 @@ namespace VisualBehaviorTree.BTEditor
                 var portVal = portInfo.Value;
                 input = InstantiatePort(portVal.Orientation, portVal.Direction, portVal.Capacity, portVal.Type);
                 input.portName = "";
+                input.style.flexDirection = FlexDirection.Column;
                 inputContainer.Add(input);
             }
         }
@@ -49,8 +53,14 @@ namespace VisualBehaviorTree.BTEditor
                 var portVal = portInfo.Value;
                 output = InstantiatePort(portVal.Orientation, portVal.Direction, portVal.Capacity, portVal.Type);
                 output.portName = "";
+                output.style.flexDirection = FlexDirection.ColumnReverse;
                 outputContainer.Add(output);
             }
+        }
+
+        private void SetupClasses()
+        {
+            AddToClassList(node.UssClass);
         }
 
         public override void SetPosition(Rect newPos)

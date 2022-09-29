@@ -7,6 +7,7 @@ namespace VisualBehaviorTree.Core
 {
     public abstract class ActionNode : TreeNode
     {
+        public override string UssClass => nameof(ActionNode);
 
         internal override void AddChild(TreeNode child)
         {

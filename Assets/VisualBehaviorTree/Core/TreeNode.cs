@@ -45,7 +45,7 @@ namespace VisualBehaviorTree.Core
             {
                 return new NodePort
                 {
-                    Orientation = Orientation.Horizontal,
+                    Orientation = Orientation.Vertical,
                     Direction = Direction.Input,
                     Capacity = Port.Capacity.Single,
                     Type = typeof(bool)
@@ -58,6 +58,14 @@ namespace VisualBehaviorTree.Core
             get
             {
                 return null;
+            }
+        }
+
+        public virtual string UssClass
+        {
+            get
+            {
+                return nameof(TreeNode);
             }
         }
 

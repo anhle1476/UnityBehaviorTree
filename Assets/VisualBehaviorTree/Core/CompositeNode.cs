@@ -9,15 +9,17 @@ namespace VisualBehaviorTree.Core
     {
         [Header("Properties")]
         [ReadOnly]
-        public List<TreeNode> children = new List<TreeNode>();
+        public List<TreeNode> children = new();
 
         public override NodePort? OutputPort => new NodePort
         {
-            Orientation = Orientation.Horizontal,
+            Orientation = Orientation.Vertical,
             Direction = Direction.Output,
             Capacity = Port.Capacity.Multi,
             Type = typeof(bool)
         };
+
+        public override string UssClass => nameof(CompositeNode);
 
         internal override void AddChild(TreeNode child)
         {
