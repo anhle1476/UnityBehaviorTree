@@ -30,6 +30,14 @@ namespace VisualBehaviorTree.BTEditor
 
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/VisualBehaviorTree/BTEditor/BehaviorTreeEditor.uss");
             styleSheets.Add(styleSheet);
+
+            Undo.undoRedoPerformed += OnUndoRedo;
+        }
+
+        private void OnUndoRedo()
+        {
+            PopulateView(tree);
+            AssetDatabase.SaveAssets();
         }
 
         internal void PopulateView(BehaviorTree tree)

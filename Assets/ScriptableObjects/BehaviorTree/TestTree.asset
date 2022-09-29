@@ -54,7 +54,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2fad6e8e7bcd16b439a884923ce47fd1
-  position: {x: 544, y: 252}
+  position: {x: 580.99994, y: 218.20917}
   child: {fileID: -7685995027677207403}
 --- !u!114 &-480826481881902769
 MonoBehaviour:

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections;
-using Unity.VisualScripting.InputSystem;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -67,8 +66,10 @@ namespace VisualBehaviorTree.BTEditor
         {
             base.SetPosition(newPos);
 
+            Undo.RecordObject(node, $"{nameof(BehaviorTree)} ({nameof(SetPosition)})");
             node.position.x = newPos.xMin;
             node.position.y = newPos.yMin;
+            EditorUtility.SetDirty(node);
         }
 
         public override void OnSelected()
