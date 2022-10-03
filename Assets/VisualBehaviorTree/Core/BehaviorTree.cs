@@ -69,6 +69,17 @@ namespace VisualBehaviorTree.Core
             return parent.GetChildren();
         }
 
+        protected void Traverse(TreeNode node, Action<TreeNode> visiter)
+        {
+            if (!node) return;
+            var children = node.GetChildren();
+            foreach (TreeNode child in children)
+            {
+                visiter.Invoke(child);
+                Traverse(child, visiter);
+            }
+        }
+
         public BehaviorTree Clone()
         {
             if (rootNode == null)
@@ -78,6 +89,10 @@ namespace VisualBehaviorTree.Core
             }
             BehaviorTree tree = Instantiate(this);
             tree.rootNode = tree.rootNode.Clone();
+            tree.nodes = new List<TreeNode>();
+
+            Traverse(tree.rootNode, (node) => tree.nodes.Add(node));
+
             return tree;
         }
     }

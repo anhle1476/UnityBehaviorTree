@@ -99,7 +99,27 @@ namespace VisualBehaviorTree.BTEditor
                 });
             }
 
+            if (changes.movedElements != null)
+            {
+                changes.movedElements.ForEach(elem =>
+                {
+                    NodeView nodeView = elem as NodeView;
+                    NodeView parent = GetParentNodeView(nodeView);
+                    if (parent != null)
+                    {
+                        parent.SortChildren();
+                    }
+                });
+            }
+
             return changes;
+        }
+
+        public NodeView GetParentNodeView(NodeView nodeView)
+        {
+            if (nodeView == null || nodeView.input == null || nodeView.input.connected == false) return null;
+            Edge inputEdge = nodeView.input.connections.First();
+            return inputEdge.output.node as NodeView;
         }
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
@@ -124,7 +144,7 @@ namespace VisualBehaviorTree.BTEditor
             {
                 evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}",
                     action: (a) => CreateNode(type),
-                    actionStatusCallback: (a) => GetActionStatus());
+                    actionStatusCallback: GetActionStatus);
             }
         }
 
@@ -134,9 +154,11 @@ namespace VisualBehaviorTree.BTEditor
             CreateNodeView(node);
         }
 
-        private DropdownMenuAction.Status GetActionStatus()
+        private DropdownMenuAction.Status GetActionStatus(DropdownMenuAction action)
         {
-            return tree != null ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled;
+            return !Application.isPlaying && tree != null
+                ? DropdownMenuAction.Status.Normal
+                : DropdownMenuAction.Status.Disabled;
         }
 
         private void CreateNodeView(TreeNode node)

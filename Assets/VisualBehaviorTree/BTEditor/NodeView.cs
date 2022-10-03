@@ -77,5 +77,17 @@ namespace VisualBehaviorTree.BTEditor
             base.OnSelected();
             OnNodeSelected?.Invoke(this);
         }
+
+        public void SortChildren()
+        {
+            var composite = node as CompositeNode;
+            if (!composite) return;
+            composite.children.Sort(SortByHorizontalPosition);
+        }
+
+        private int SortByHorizontalPosition(TreeNode node1, TreeNode node2)
+        {
+            return node1.position.x.CompareTo(node2.position.x);
+        }
     }
 }

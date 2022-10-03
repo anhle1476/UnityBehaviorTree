@@ -97,7 +97,7 @@
 }
 
 .ActionNode #input {
-    background-color: rgba(181, 255, 233, 255);
+    background-color: rgb(181, 255, 233);
 }
 
 .RootNode #input {
@@ -110,4 +110,8 @@
 
 .DecoratorNode #input {
     background-color: rgb(173, 189, 255);
+}
+
+.port {
+    min-width: 15px;
 }

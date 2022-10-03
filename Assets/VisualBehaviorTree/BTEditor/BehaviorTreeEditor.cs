@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -54,13 +55,55 @@ namespace VisualBehaviorTree.BTEditor
             OnSelectionChange();
         }
 
+        private void OnEnable()
+        {
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged; // just to make sure we're not subscribe this 2 times
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        }
+
+        private void OnDisable()
+        {
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+        }
+
+        private void OnPlayModeStateChanged(PlayModeStateChange state)
+        {
+            switch (state)
+            {
+                case PlayModeStateChange.EnteredEditMode:
+                case PlayModeStateChange.EnteredPlayMode:
+                    OnSelectionChange();
+                    break;
+                case PlayModeStateChange.ExitingEditMode:
+                case PlayModeStateChange.ExitingPlayMode:
+                    break;
+            }
+        }
+
         private void OnSelectionChange()
         {
-            BehaviorTree tree = Selection.activeObject as BehaviorTree;
-            if (tree && AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID()))
+            if (treeView == null) return;
+
+            BehaviorTree tree = GetSelectedBehaviorTree();
+
+            if (tree && (Application.isPlaying || AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID())))
             {
                 treeView.PopulateView(tree);
             }
+        }
+
+        private static BehaviorTree GetSelectedBehaviorTree()
+        {
+            BehaviorTree tree = Selection.activeObject as BehaviorTree;
+            if (tree) return tree;
+
+            if (Selection.activeGameObject
+                && Selection.activeGameObject.TryGetComponent(out BehaviorTreeRunner treeRunner))
+            {
+                tree = treeRunner.tree;
+            }
+
+            return tree;
         }
 
         void OnNodeSelectionChanged(NodeView node)
