@@ -15,7 +15,15 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b8e20057e2cb1a14cbf5a6623a813342
-  position: {x: 199.88, y: 8.119995}
+  position: {x: 203, y: -22.919998}
+  description: asvkbnasvoh asovnas aosvn nkas vaosv asvoas voas viasfas casibf asvkbnasvoh
+    asovnas aosvn nkas vaosv asvoas voas viasfas casibf asvkbnasvoh asovnas aosvn
+    nkas vaosv asvoas voas viasfas casibf asvkbnasvoh asovnas aosvn nkas vaosv asvoas
+    voas viasfas casibf asvkbnasvoh asovnas aosvn nkas vaosv asvoas voas viasfas
+    casibf
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    moveToObject: {fileID: 0}
   child: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -33,3 +41,6 @@ MonoBehaviour:
   treeState: 0
   nodes:
   - {fileID: -4028154911265876525}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    moveToObject: {fileID: 0}

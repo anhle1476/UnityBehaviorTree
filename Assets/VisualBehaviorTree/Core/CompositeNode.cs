@@ -7,7 +7,6 @@ namespace VisualBehaviorTree.Core
 {
     public abstract class CompositeNode : TreeNode
     {
-        [Header("Properties")]
         [ReadOnly]
         public List<TreeNode> children = new();
 

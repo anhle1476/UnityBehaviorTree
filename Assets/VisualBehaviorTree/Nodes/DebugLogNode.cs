@@ -5,7 +5,6 @@ namespace VisualBehaviorTree.Nodes
 {
     public class DebugLogNode : ActionNode
     {
-        [Header("Properties")]
         public string message = "Debug Node";
 
         protected override void OnStart()

@@ -5,7 +5,6 @@ namespace VisualBehaviorTree.Nodes
 {
     public class WaitNode : ActionNode
     {
-        [Header("Properties")]
         public float duration = 1;
 
         float startTime;

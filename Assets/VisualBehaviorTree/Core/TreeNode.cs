@@ -5,6 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using VisualBehaviorTree.Utils;
+using Blackboard = VisualBehaviorTree.BTEditor.Blackboard;
 
 namespace VisualBehaviorTree.Core
 {
@@ -32,13 +33,19 @@ namespace VisualBehaviorTree.Core
         [ReadOnly]
         public State state = State.Running;
         [ReadOnly]
-        public bool started = false;
+        public bool started;
 
         [HideInInspector]
         public string guid;
         [HideInInspector]
         public Vector2 position;
+        [Header("Properties")]
+        [TextArea] 
+        public string description;
+        // TODO: continue here with the blackboard
+        [HideInInspector] public Blackboard blackboard;
 
+        
         public virtual NodePort? InputPort
         {
             get

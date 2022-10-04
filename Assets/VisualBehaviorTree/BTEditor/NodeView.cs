@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using VisualBehaviorTree.Core;
@@ -14,7 +15,6 @@ namespace VisualBehaviorTree.BTEditor
         public Port input;
         public Port output;
 
-
         public NodeView(TreeNode node) : base("Assets/VisualBehaviorTree/BTEditor/NodeView.uxml")
         {
             this.node = node;
@@ -27,6 +27,10 @@ namespace VisualBehaviorTree.BTEditor
             CreateInputPorts();
             CreateOutputPorts();
             SetupClasses();
+
+            var descriptionLbl = this.Q<Label>("description");
+            descriptionLbl.bindingPath = "description";
+            descriptionLbl.Bind(new SerializedObject(node));
         }
 
         private void CreateInputPorts()

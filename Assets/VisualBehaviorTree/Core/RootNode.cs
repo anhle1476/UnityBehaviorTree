@@ -7,7 +7,6 @@ namespace VisualBehaviorTree.Core
 {
     public class RootNode : TreeNode
     {
-        [Header("Properties")]
         [ReadOnly]
         public TreeNode child;
 

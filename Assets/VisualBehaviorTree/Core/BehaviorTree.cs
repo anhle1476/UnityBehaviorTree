@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using VisualBehaviorTree.BTEditor;
 
 namespace VisualBehaviorTree.Core
 {
@@ -10,7 +11,8 @@ namespace VisualBehaviorTree.Core
     {
         public TreeNode rootNode;
         public TreeNode.State treeState = TreeNode.State.Running;
-        public List<TreeNode> nodes = new List<TreeNode>();
+        public List<TreeNode> nodes = new();
+        public Blackboard blackboard = new();
 
         public TreeNode.State Update()
         {

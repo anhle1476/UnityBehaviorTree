@@ -139,3 +139,8 @@
 .Success > #node-state {
     background-color: rgba(6, 214, 160, 255);
 }
+
+#description {
+    white-space: normal;
+    max-width: 200px;
+}
