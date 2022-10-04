@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <Style src="project://database/Assets/VisualBehaviorTree/BTEditor/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=4a90d9ab7ee894f429a9524d526df341&amp;type=3#NodeViewStyle" />
+    <ui:VisualElement name="node-state" picking-mode="Ignore" />
     <ui:VisualElement name="node-border">
         <ui:VisualElement name="contents">
             <ui:VisualElement name="top">

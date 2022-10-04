@@ -89,5 +89,30 @@ namespace VisualBehaviorTree.BTEditor
         {
             return node1.position.x.CompareTo(node2.position.x);
         }
+
+        public void UpdateState()
+        {
+            RemoveFromClassList("Running");
+            RemoveFromClassList("Failure");
+            RemoveFromClassList("Success");
+
+            if (!Application.isPlaying) return;
+
+            switch (node.state)
+            {
+                case TreeNode.State.Running:
+                    if (node.started)
+                    {
+                        AddToClassList("Running");
+                    }
+                    break;
+                case TreeNode.State.Failure:
+                    AddToClassList("Failure");
+                    break;
+                case TreeNode.State.Success:
+                    AddToClassList("Success");
+                    break;
+            }
+        }
     }
 }

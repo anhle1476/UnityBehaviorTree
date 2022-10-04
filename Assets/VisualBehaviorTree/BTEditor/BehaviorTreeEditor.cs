@@ -66,6 +66,14 @@ namespace VisualBehaviorTree.BTEditor
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
         }
 
+        private void OnInspectorUpdate()
+        {
+            if (treeView != null && Application.isPlaying)
+            {
+                treeView.UpdateNodeStates();
+            }
+        }
+
         private void OnPlayModeStateChanged(PlayModeStateChange state)
         {
             switch (state)

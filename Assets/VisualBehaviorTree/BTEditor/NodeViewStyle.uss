@@ -115,3 +115,27 @@
 .port {
     min-width: 15px;
 }
+
+#node-state {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.Running > #node-state {
+    background-color: rgba(254, 215, 102, 255);
+}
+
+.Failure > #node-state {
+    background-color: rgba(254, 74, 73, 255);
+}
+
+.Success > #node-state {
+    background-color: rgba(6, 214, 160, 255);
+}

@@ -181,5 +181,14 @@ namespace VisualBehaviorTree.BTEditor
         {
             return GetNodeByGuid(node.guid) as NodeView;
         }
+
+        public void UpdateNodeStates()
+        {
+            foreach (var node in nodes)
+            {
+                var view = node as NodeView;
+                view.UpdateState();
+            }
+        }
     }
 }
